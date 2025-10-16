@@ -394,6 +394,7 @@ footer p {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   padding: 8px 16px;
   color: var(--white);
+  outline: none;
 }
 
 .subscribe-form input[type="email"]::placeholder {
