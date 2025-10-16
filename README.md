@@ -8,11 +8,11 @@ Goit homework #4
 -added modal box
 -added contact form
 
-to-do:
--fix contact form icon sizes
--fix contact form close icon
--fix contact form input area border over :focus and :active
--fix contact form input area icon color over :focus and :active
--fix contact form element positioning
--fix contact form comment area sizing
--add fieldset to contact form
+16.10.2025
+-fixed contact form element positionings
+-fixed contact form comment area sizing and styles
+-fixed contact form icon sizes
+-fixed contact form close icon
+-border and icon now changes color when form area is focused
+-customised the privacy policy checkbox
+-set modal display to "none", added "is-open" function

@@ -15,6 +15,7 @@
   --base-font-weight: 500;
 }
 
+/* #region general*/
 ul {
   list-style-type: none;
   margin-top: 0;
@@ -33,7 +34,9 @@ body {
   max-width: 1440px;
   margin: 0 auto;
 }
+/* #endregion */
 
+/* #region navbar*/
 header {
   display: flex;
   justify-content: space-between;
@@ -117,6 +120,7 @@ address a {
 address a:hover {
   color: var(--ocean);
 }
+/* #endregion */
 
 section {
   padding: 120px 156px;
@@ -128,6 +132,7 @@ section ul {
   flex-wrap: wrap;
 }
 
+/* #region hero-image*/
 .hero-image {
   background: linear-gradient(var(--grey)), url("../Images/people-office.jpg"),
     no-repeat center;
@@ -165,6 +170,7 @@ h1 {
 .hero-image button:focus {
   background-color: var(--ocean);
 }
+/* #endregion */
 
 h2 {
   font-weight: 700;
@@ -192,6 +198,7 @@ p {
   margin-bottom: 0;
 }
 
+/* #region section-1*/
 .section-1 ul li {
   width: 264px;
 }
@@ -209,7 +216,9 @@ p {
   width: 64px;
   height: 64px;
 }
+/* #endregion */
 
+/* #region section-2 team-card*/
 .section-2 {
   background-color: var(--cloud);
 }
@@ -259,7 +268,9 @@ p {
   width: 16px;
   height: 16px;
 }
+/* #endregion */
 
+/* #region section-3 portfolio-card*/
 .section-3 ul li {
   width: 360px;
   cursor: pointer;
@@ -314,7 +325,9 @@ p {
   border-style: none solid solid;
   padding: 31.4px 16px;
 }
+/* #endregion */
 
+/* #region footer*/
 footer {
   background-color: var(--navy-blue);
   padding: 100px 156px;
@@ -426,7 +439,9 @@ footer p {
   width: 24px;
   height: 24px;
 }
+/* #endregion */
 
+/* #region modal*/
 .modal {
   position: fixed;
   top: 0;
@@ -437,15 +452,45 @@ footer p {
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
+}
+
+.is-open {
+  display: flex;
 }
 
 .modal-content {
   border-radius: 4px;
   width: 408px;
-  padding: 24px;
+  padding: 72px 24px 24px 24px;
   background-color: var(--dairy);
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12),
     0 2px 1px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close-icon {
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+  fill: var(--navy-blue);
+  background-color: var(--cornflower);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-icon:hover,
+.close-icon:focus,
+.close-icon:active {
+  background-color: var(--ocean);
+  fill: var(--white);
+  border: none;
 }
 
 .modal-content p {
@@ -455,17 +500,11 @@ footer p {
   margin-bottom: 16px;
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
 .contact-form label {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-bottom: 8px;
   font-size: 12px;
   line-height: 1.16667;
   letter-spacing: 0.04em;
@@ -473,35 +512,56 @@ footer p {
 }
 
 .contact-form-input-area {
-  border: 1px solid var(--navy-blue-modal);
-  border-radius: 4px;
-  width: 360px;
-  height: 40px;
-  padding: 11px 16px;
   display: flex;
   align-items: center;
-}
-
-.contact-form-input-area:focus,
-.contact-form-input-area:active {
-  border-color: var(--iris);
+  height: 40px;
+  padding: 11px 16px;
+  border: 1px solid var(--navy-blue-modal);
+  border-radius: 4px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-form-icon {
   width: 18px;
-  height: 18px;
+  height: 12px;
   margin-right: 4px;
   fill: var(--navy-blue);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.contact-form input {
-  background-color: transparent;
+.contact-form-label input {
   outline: none;
   border: none;
   width: 100%;
 }
 
-.contact-form input::placeholder {
+.contact-form label:focus-within .contact-form-input-area {
+  border-color: var(--iris);
+}
+
+.contact-form label:focus-within .contact-form-icon {
+  fill: var(--iris);
+}
+
+.contact-form label:nth-child(4) {
+  margin-bottom: 16px;
+}
+
+.contact-form textarea {
+  height: 120px;
+  resize: none;
+  padding: 8px 16px;
+  outline: none;
+  border: 1px solid var(--navy-blue-modal);
+  border-radius: 4px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-form textarea:focus-within {
+  border-color: var(--ocean);
+}
+
+.contact-form textarea::placeholder {
   font-family: inherit;
   font-size: 12px;
   line-height: 1.16667;
@@ -509,26 +569,47 @@ footer p {
   color: var(--navy-blue-modal);
 }
 
-.privacy-policy-checkbox input {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-}
-
-.privacy-policy-checkbox label {
-  font-size: 12px;
-  line-height: 1.16667;
-  letter-spacing: 0.04em;
-  color: var(--light-slate);
-  display: flex;
+.contact-form label:nth-child(5) {
+  flex-direction: row;
   align-items: center;
+  gap: 0;
+  margin-bottom: 24px;
+  position: relative;
+  padding-left: 24px;
 }
 
-.privacy-policy-checkbox label a {
+.contact-form label:nth-child(5) a {
   line-height: 1.33333;
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: var(--iris);
+}
+
+/*hide original checkbox */
+.contact-form input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.checkmark-icon {
+  position: absolute;
+  fill: transparent;
+  width: 16px;
+  height: 16px;
+  padding: 4px 3px;
+  top: 0;
+  left: 0;
+  border-radius: 2px;
+  border: 1px solid var(--navy-blue-modal);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-form input[type="checkbox"]:checked + .checkmark-icon {
+  background-color: var(--ocean);
+  border: none;
+  fill: #f4f4fd;
 }
 
 .contact-form-button {
@@ -536,8 +617,9 @@ footer p {
   border-radius: 4px;
   width: 169px;
   height: 56px;
+  padding: 0;
+  margin: 0 96px;
   border: none;
-  margin-top: 24px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: var(--base-font-weight);
@@ -553,3 +635,4 @@ footer p {
 .contact-form-button:active {
   background-color: var(--ocean);
 }
+/* #endregion */
